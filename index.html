@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>I'm Sorry Sayangg❤️</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #1b2735 0%, #090a0f 100%);
+      font-family: "Poppins", sans-serif;
+      color: white;
+      overflow: hidden;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+      animation: fadeIn 2s ease;
+    }
+
+    p {
+      font-size: 1.2em;
+      opacity: 0.8;
+    }
+
+    button {
+      background-color: #ff4b5c;
+      border: none;
+      color: white;
+      padding: 12px 28px;
+      font-size: 1em;
+      border-radius: 25px;
+      cursor: pointer;
+      margin-top: 30px;
+      transition: background 0.3s ease, transform 0.2s;
+    }
+
+    button:hover {
+      background-color: #ff6b81;
+      transform: scale(1.05);
+    }
+
+    .message {
+      opacity: 0;
+      transition: opacity 1s ease;
+      max-width: 500px;
+      line-height: 1.6;
+    }
+
+    .hearts {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -1;
+    }
+
+    .heart {
+      position: absolute;
+      color: rgba(255, 100, 130, 0.4);
+      animation: float 10s linear infinite;
+      font-size: 1.5em;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) scale(0.8);
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) scale(1.2);
+        opacity: 0;
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Music control button */
+    #musicControl {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba(255, 255, 255, 0.15);
+      border: none;
+      color: white;
+      padding: 10px 16px;
+      border-radius: 20px;
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+    }
+
+    #musicControl:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+  </style>
+</head>
+<body>
+  <div class="hearts" id="hearts"></div>
+
+  <button id="musicControl">🎵 Pause Music</button>
+
+  <h1>I messed up…</h1>
+  <p>And I don’t want to be a dick to my sweet alpaca anymore.</p>
+  <button id="forgiveBtn">Forgive Me?</button>
+
+  <div class="message" id="message">
+    <h2>I'm truly sorry my pwetty pwincess💔</h2>
+    <p>
+      I know I hurt you, and that’s the last thing I ever wanted.<br />
+      I still love you Irdina Umairah — deeply, honestly.<br />
+      You deserve the best and I wasn't the best last night.<br />
+      I just want us to be okay again. ❤️
+    </p>
+  </div>
+
+  <!-- Background music -->
+  <audio id="bgMusic" autoplay loop>
+    <source src="soft.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    const btn = document.getElementById("forgiveBtn");
+    const message = document.getElementById("message");
+    const heartsContainer = document.getElementById("hearts");
+    const bgMusic = document.getElementById("bgMusic");
+    const musicControl = document.getElementById("musicControl");
+
+    btn.addEventListener("click", () => {
+      message.style.opacity = 1;
+      btn.style.display = "none";
+    });
+
+    // Floating hearts
+    for (let i = 0; i < 20; i++) {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerHTML = "❤️";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = 6 + Math.random() * 4 + "s";
+      heart.style.fontSize = 1 + Math.random() * 1.5 + "em";
+      heartsContainer.appendChild(heart);
+    }
+
+    // Music control
+    musicControl.addEventListener("click", () => {
+      if (bgMusic.paused) {
+        bgMusic.play();
+        musicControl.textContent = "🎵 Pause Music";
+      } else {
+        bgMusic.pause();
+        musicControl.textContent = "▶️ Play Music";
+      }
+    });
+  </script>
+</body>
+</html>
